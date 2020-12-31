@@ -1,2 +1,0 @@
-### Sunil Jagadish
-Hello, world!
