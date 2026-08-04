@@ -43,6 +43,15 @@ h1 span{display:block;font-size:15px;font-weight:600;color:var(--ink-dim);
 .callout b{color:var(--ink)}
 .callout.go{border-left-color:var(--go)}
 
+/* segmented control */
+.seg{display:flex;gap:7px}
+.seg button{flex:1;padding:12px 0;background:var(--panel-2);border:1px solid var(--line);
+  color:var(--ink-dim);border-radius:8px;font-size:15px;font-weight:700;
+  font-family:var(--mono);cursor:pointer;transition:background .12s,color .12s,border-color .12s}
+.seg button:active{background:var(--line)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--ground);
+  border-color:var(--ink)}
+
 /* index session list */
 .sesslist{margin:18px 0 0;display:grid;gap:11px}
 .card{display:block;text-decoration:none;background:var(--panel);
