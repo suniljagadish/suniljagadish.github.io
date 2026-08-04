@@ -4,675 +4,114 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#16181C">
-<meta name="referrer" content="strict-origin-when-cross-origin">
-<title>Session A · Onboarding W1</title>
-<style>
-:root{
-  --ground:#16181C;
-  --panel:#1E2127;
-  --panel-2:#25292F;
-  --line:#31363E;
-  --ink:#EDEBE6;
-  --ink-dim:#9AA0A9;
-  --ink-faint:#666D77;
-  --go:#5FB87A;
-  --warn:#E0803C;
-  --stop:#D3564F;
-  --p45:#B33A32;
-  --p35:#3F6C9E;
-  --p25:#4C8B5A;
-  --p10:#C68A2E;
-  --p5:#8A9199;
-  --p2:#D8D4CC;
-}
-*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html{-webkit-text-size-adjust:100%}
-body{
-  background:var(--ground);color:var(--ink);
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
-  font-size:16px;line-height:1.5;
-  padding:0 0 64px;
-  padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right);
-}
-.wrap{max-width:640px;margin:0 auto;padding:0 16px}
-
-/* ---------- masthead ---------- */
-header{padding:26px 0 18px;border-bottom:1px solid var(--line)}
-.eyebrow{
-  font-family:ui-monospace,"SF Mono",Menlo,monospace;
-  font-size:11px;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--ink-faint);margin-bottom:8px
-}
-h1{
-  font-size:30px;font-weight:800;letter-spacing:-.02em;line-height:1.08;
-}
-h1 span{display:block;font-size:15px;font-weight:600;color:var(--ink-dim);letter-spacing:0;margin-top:6px}
-.meta{
-  display:flex;gap:18px;margin-top:16px;
-  font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:12px;color:var(--ink-dim);
-  font-variant-numeric:tabular-nums;flex-wrap:wrap
-}
-.meta b{color:var(--ink);font-weight:700}
-
-/* ---------- bar setup ---------- */
-.barset{
-  margin:18px 0 0;padding:13px 15px;background:var(--panel);
-  border:1px solid var(--line);border-radius:10px
-}
-.barset .lbl{font-size:13px;color:var(--ink-dim);margin-bottom:9px}
-.seg{display:flex;gap:7px}
-.seg button{
-  flex:1;padding:11px 0;background:var(--panel-2);border:1px solid var(--line);
-  color:var(--ink-dim);border-radius:8px;font-size:14px;font-weight:700;
-  font-family:ui-monospace,"SF Mono",Menlo,monospace;cursor:pointer
-}
-.seg button[aria-pressed="true"]{background:var(--ink);color:var(--ground);border-color:var(--ink)}
-
-/* ---------- collapsibles ---------- */
-details{margin:14px 0;background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden}
-summary{
-  padding:15px;cursor:pointer;list-style:none;display:flex;
-  justify-content:space-between;align-items:center;gap:10px
-}
-summary::-webkit-details-marker{display:none}
-.sm-t{font-size:15px;font-weight:700}
-.sm-s{font-size:12px;color:var(--ink-faint);font-family:ui-monospace,"SF Mono",Menlo,monospace}
-.chev{color:var(--ink-faint);font-size:13px;transition:transform .18s}
-details[open] .chev{transform:rotate(90deg)}
-.dbody{padding:0 15px 16px;border-top:1px solid var(--line);padding-top:14px}
-.grp{margin-bottom:14px}
-.grp:last-child{margin-bottom:0}
-.grp h4{
-  font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:10.5px;
-  letter-spacing:.14em;text-transform:uppercase;color:var(--warn);margin-bottom:7px;font-weight:600
-}
-.grp ul{list-style:none;display:flex;flex-wrap:wrap;gap:6px}
-.grp li{
-  font-size:13.5px;background:var(--panel-2);border:1px solid var(--line);
-  padding:6px 10px;border-radius:6px;color:var(--ink-dim)
-}
-
-/* ---------- exercise cards ---------- */
-.ex{
-  margin:16px 0;background:var(--panel);border:1px solid var(--line);
-  border-radius:12px;overflow:hidden
-}
-.ex-head{padding:16px 16px 0;display:flex;gap:13px;align-items:flex-start}
-.ord{
-  font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:12px;font-weight:700;
-  color:var(--ground);background:var(--ink-dim);border-radius:5px;
-  padding:4px 7px;flex-shrink:0;margin-top:3px
-}
-.ex-name{font-size:20px;font-weight:800;letter-spacing:-.01em;line-height:1.2}
-.ex-tag{font-size:12px;color:var(--ink-faint);margin-top:3px}
-
-/* prescription */
-.rx{
-  margin:15px 16px 0;padding:14px;background:var(--ground);
-  border:1px solid var(--line);border-radius:9px
-}
-.rx-top{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
-.rx-load{
-  font-size:34px;font-weight:800;letter-spacing:-.03em;
-  font-variant-numeric:tabular-nums;line-height:1
-}
-.rx-load small{font-size:15px;font-weight:600;color:var(--ink-dim);letter-spacing:0}
-.rx-vol{
-  font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:15px;
-  color:var(--go);font-weight:700
-}
-.rx-sub{
-  display:flex;gap:16px;margin-top:11px;padding-top:11px;border-top:1px solid var(--line);
-  font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:11.5px;color:var(--ink-faint);
-  flex-wrap:wrap
-}
-.rx-sub b{color:var(--ink-dim)}
-
-/* plate math: the signature */
-.plates{margin:12px 16px 0}
-.plates .cap{
-  font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:10.5px;
-  letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:8px
-}
-.bar{
-  display:flex;align-items:center;gap:3px;padding:11px 12px;background:var(--ground);
-  border:1px solid var(--line);border-radius:8px;overflow-x:auto;
-  -webkit-overflow-scrolling:touch
-}
-.sleeve{width:22px;height:5px;background:var(--p5);border-radius:2px;flex-shrink:0;opacity:.55}
-.pl{
-  flex-shrink:0;border-radius:3px;display:flex;align-items:center;justify-content:center;
-  font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:10.5px;font-weight:700;
-  color:#fff;width:27px
-}
-.pl.d45{background:var(--p45);height:60px}
-.pl.d35{background:var(--p35);height:52px}
-.pl.d25{background:var(--p25);height:45px}
-.pl.d10{background:var(--p10);height:34px}
-.pl.d5 {background:var(--p5);height:27px}
-.pl.d2 {background:var(--p2);height:21px;color:#2A2D33}
-.bar .note{
-  font-size:12.5px;color:var(--ink-faint);padding-left:8px;white-space:nowrap;
-  font-family:ui-monospace,"SF Mono",Menlo,monospace
-}
-.perside{
-  margin-top:7px;font-family:ui-monospace,"SF Mono",Menlo,monospace;
-  font-size:11.5px;color:var(--ink-faint)
-}
-
-/* build-up sets */
-.ramp{margin:12px 16px 0}
-.ramp .cap{
-  font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:10.5px;
-  letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:8px
-}
-.ramp-row{display:flex;gap:6px;flex-wrap:wrap}
-.ramp-row span{
-  font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:12.5px;
-  background:var(--panel-2);border:1px solid var(--line);padding:6px 9px;
-  border-radius:6px;color:var(--ink-dim);font-variant-numeric:tabular-nums
-}
-
-/* set tracking + timer */
-.track{margin:14px 16px 0;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-.setchip{
-  width:42px;height:42px;border-radius:9px;border:1.5px solid var(--line);
-  background:var(--panel-2);color:var(--ink-faint);cursor:pointer;
-  font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:14px;font-weight:700
-}
-.setchip[aria-pressed="true"]{background:var(--go);border-color:var(--go);color:#10240F}
-.timer{
-  margin-left:auto;padding:0 15px;height:42px;border-radius:9px;
-  background:var(--panel-2);border:1.5px solid var(--line);color:var(--ink-dim);
-  font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:14px;font-weight:700;
-  cursor:pointer;font-variant-numeric:tabular-nums;min-width:96px
-}
-.timer.run{background:var(--warn);border-color:var(--warn);color:#241203}
-.timer.done{background:var(--go);border-color:var(--go);color:#10240F}
-
-/* cues / faults */
-.notes{margin:15px 0 0;border-top:1px solid var(--line)}
-.nblock{padding:14px 16px;border-bottom:1px solid var(--line)}
-.nblock:last-child{border-bottom:none}
-.nblock h5{
-  font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:10.5px;
-  letter-spacing:.14em;text-transform:uppercase;margin-bottom:9px;font-weight:600
-}
-.nblock.cues h5{color:var(--go)}
-.nblock.faults h5{color:var(--stop)}
-.nblock ul{list-style:none;display:grid;gap:7px}
-.nblock li{font-size:14.5px;padding-left:16px;position:relative;color:var(--ink)}
-.nblock.cues li:before{content:"";position:absolute;left:0;top:9px;width:6px;height:6px;border-radius:50%;background:var(--go)}
-.nblock.faults li:before{content:"";position:absolute;left:2px;top:8px;width:8px;height:2px;background:var(--stop)}
-.why{
-  padding:13px 16px;background:var(--panel-2);font-size:13.5px;color:var(--ink-dim);
-  border-bottom:1px solid var(--line)
-}
-.why b{color:var(--ink);font-weight:700}
-/* video */
-.video{padding:14px 16px;background:var(--panel-2);border-top:1px solid var(--line)}
-.video .vcap{
-  font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:10.5px;
-  letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:9px
-}
-.poster{
-  position:relative;width:100%;aspect-ratio:16/9;border-radius:8px;overflow:hidden;
-  cursor:pointer;background:var(--ground);border:1px solid var(--line);display:block;
-  text-decoration:none
-}
-.poster img{width:100%;height:100%;object-fit:cover;display:block;opacity:.82}
-.poster.nothumb img{display:none}
-.poster.nothumb{background:var(--ground);display:flex;align-items:center;justify-content:center}
-.poster.nothumb .play{position:static;flex-direction:column;gap:10px}
-.poster.nothumb .play:after{
-  content:attr(data-label);font-size:13px;color:var(--ink-dim);text-align:center;
-  max-width:80%;line-height:1.4
-}
-.poster:active img{opacity:.6}
-.play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
-.play i{
-  width:58px;height:58px;border-radius:50%;background:rgba(12,14,17,.72);
-  border:2px solid rgba(237,235,230,.92);display:flex;align-items:center;
-  justify-content:center;color:var(--ink);font-size:19px;font-style:normal;padding-left:4px
-}
-.video iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:8px;display:block}
-.vmeta{margin-top:9px;font-size:12.5px;color:var(--ink-faint);line-height:1.5}
-.vmeta a{color:var(--ink-dim);text-decoration:underline;text-underline-offset:2px}
-
-footer{
-  margin-top:26px;padding-top:16px;border-top:1px solid var(--line);
-  font-size:12px;color:var(--ink-faint);line-height:1.7
-}
-@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
-:focus-visible{outline:2px solid var(--warn);outline-offset:2px}
-</style>
+<title>Strength Block &middot; Onboarding</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class="top"><div class="row">
+  <span class="home">Strength block</span>
+  <button class="alarmtest" type="button">Test alarm</button>
+  <div class="where">Onboarding &middot; 3 weeks</div>
+</div></div>
 <div class="wrap">
 
 <header>
-  <div class="eyebrow">Onboarding · Week 1 · Session A</div>
-  <h1>Trap Bar Deadlift + Back Squat
-    <span>Monday 10 August 2026 · lower body strength</span>
-  </h1>
+  <div class="eyebrow">Phase 1 of the 2027 build</div>
+  <h1>Onboarding<span>10 to 30 August 2026 &middot; two sessions a week</span></h1>
   <div class="meta">
-    <div><b>45</b> min</div>
-    <div><b>4</b> lifts</div>
-    <div>RPE <b>6&ndash;7</b> throughout</div>
+    <div><b>6</b> sessions</div>
+    <div><b>3</b> weeks</div>
+    <div><b>45&ndash;50</b> min each</div>
+    <div>RPE <b>6&ndash;7</b></div>
   </div>
 </header>
 
-<div class="barset">
-  <div class="lbl">Which bar are you loading? Plate maths below updates.</div>
-  <div class="seg" role="group" aria-label="Trap bar weight">
-    <button data-bar="45" aria-pressed="true">45 lb</button>
-    <button data-bar="55" aria-pressed="false">55 lb</button>
-    <button data-bar="60" aria-pressed="false">60 lb</button>
+<div class="callout"><b>This phase is about learning the movements, not loading them.</b> Every set stops around RPE 6 to 7, roughly three reps in reserve. The loads are deliberately conservative because the point of these three weeks is pattern quality and tissue tolerance. Progression comes later.</div>
+
+<h2>Sessions</h2>
+<div class="h2sub">Session A is the bilateral day, trap bar and squat. Session B is unilateral and posterior chain.</div>
+<div class="sesslist">
+<a class="card" href="w1-a.html">
+  <div class="chead">
+    <span class="wk">W1 &middot; A</span>
+    <span class="when">Mon 10 Aug</span>
   </div>
+  <div class="ctitle">Trap Bar Deadlift + Back Squat</div>
+  <div class="lifts">Trap Bar Deadlift, Back Squat, Weighted Pull-up, Hanging Leg Raise</div>
+  <div class="cfoot">4 lifts &middot; 45 min</div>
+</a>
+<a class="card" href="w1-b.html">
+  <div class="chead">
+    <span class="wk">W1 &middot; B</span>
+    <span class="when">Sat 15 Aug <span style="color:var(--warn)">moved</span></span>
+  </div>
+  <div class="ctitle">Unilateral + Posterior Chain</div>
+  <div class="lifts">Trap Bar Deadlift, Bulgarian Split Squat, Single-leg RDL, Nordic Curl, Bent-over Row, Box Jump</div>
+  <div class="cfoot">6 lifts &middot; 50 min</div>
+</a>
+<a class="card" href="w2-a.html">
+  <div class="chead">
+    <span class="wk">W2 &middot; A</span>
+    <span class="when">Mon 17 Aug</span>
+  </div>
+  <div class="ctitle">Trap Bar Deadlift + Back Squat</div>
+  <div class="lifts">Trap Bar Deadlift, Back Squat, Weighted Pull-up, Hanging Leg Raise</div>
+  <div class="cfoot">4 lifts &middot; 45 min</div>
+</a>
+<a class="card" href="w2-b.html">
+  <div class="chead">
+    <span class="wk">W2 &middot; B</span>
+    <span class="when">Fri 21 Aug</span>
+  </div>
+  <div class="ctitle">Unilateral + Posterior Chain</div>
+  <div class="lifts">Trap Bar Deadlift, Bulgarian Split Squat, Single-leg RDL, Nordic Curl, Bent-over Row, Box Jump</div>
+  <div class="cfoot">6 lifts &middot; 50 min</div>
+</a>
+<a class="card" href="w3-a.html">
+  <div class="chead">
+    <span class="wk">W3 &middot; A</span>
+    <span class="when">Mon 24 Aug</span>
+  </div>
+  <div class="ctitle">Trap Bar Deadlift + Back Squat</div>
+  <div class="lifts">Trap Bar Deadlift, Back Squat, Weighted Pull-up, Hanging Leg Raise</div>
+  <div class="cfoot">4 lifts &middot; 45 min</div>
+</a>
+<a class="card" href="w3-b.html">
+  <div class="chead">
+    <span class="wk">W3 &middot; B</span>
+    <span class="when">Fri 28 Aug</span>
+  </div>
+  <div class="ctitle">Unilateral + Posterior Chain</div>
+  <div class="lifts">Trap Bar Deadlift, Bulgarian Split Squat, Single-leg RDL, Nordic Curl, Bent-over Row, Box Jump</div>
+  <div class="cfoot">6 lifts &middot; 50 min</div>
+</a>
 </div>
 
-<details>
-  <summary>
-    <div>
-      <div class="sm-t">Warm-up</div>
-      <div class="sm-s">10 min · do not skip</div>
-    </div>
-    <span class="chev">&#9656;</span>
-  </summary>
-  <div class="dbody">
-    <div class="grp"><h4>Movement prep</h4><ul>
-      <li>Cat-cow 30s</li><li>World's greatest stretch 30s each side</li></ul></div>
-    <div class="grp"><h4>Hip mobility</h4><ul>
-      <li>Kneeling hip flexor 10s each</li><li>Pigeon 10s each</li>
-      <li>Cossack squat 10s each</li><li>Deep squat hold 30s</li></ul></div>
-    <div class="grp"><h4>Glute activation</h4><ul>
-      <li>Banded lateral walks &times;15</li><li>Monster walks &times;15</li>
-      <li>Single-leg glute bridge &times;10 each</li><li>Clamshells &times;10 each</li></ul></div>
-    <div class="grp"><h4>Core</h4><ul>
-      <li>Dead bug 30s</li><li>Bird dog 30s each side</li>
-      <li>Side plank 30s each</li><li>Plank 30s</li></ul></div>
-  </div>
-</details>
+<h2>Progression, Session A</h2>
+<div class="h2sub">Main lifts add 5 lb a week. Accessories add a little load or a rep.</div>
+<table>
+<thead><tr><th>Week</th><th class="n">Trap bar 5&times;3</th><th class="n">Back squat 4&times;5</th><th class="n">Pull-up 4&times;5-8</th></tr></thead>
+<tbody><tr><td>Week 1</td><td class='n'>160 lb</td><td class='n'>115 lb</td><td class='n'>+5 lb</td></tr><tr><td>Week 2</td><td class='n'>165 lb</td><td class='n'>120 lb</td><td class='n'>+7.5 lb</td></tr><tr><td>Week 3</td><td class='n'>170 lb</td><td class='n'>125 lb</td><td class='n'>+10 lb</td></tr></tbody>
+</table>
 
-<!-- 01 -->
-<article class="ex" data-target="160">
-  <div class="ex-head">
-    <div class="ord">01</div>
-    <div>
-      <div class="ex-name">Trap Bar Deadlift</div>
-      <div class="ex-tag">Main lift · heaviest thing you do today</div>
-    </div>
-  </div>
+<h2>Progression, Session B</h2>
+<div class="h2sub">Nordic curls progress by slowing the lower and reducing hand assistance, not by adding load.</div>
+<table>
+<thead><tr><th>Week</th><th class="n">Trap bar 3&times;5</th><th class="n">Split squat</th><th class="n">SL RDL</th><th class="n">Row 4&times;8</th><th class="n">Box</th></tr></thead>
+<tbody><tr><td>Week 1</td><td class='n'>145 lb</td><td class='n'>2&times;20 lb</td><td class='n'>25 lb</td><td class='n'>95 lb</td><td class='n'>18 in</td></tr><tr><td>Week 2</td><td class='n'>150 lb</td><td class='n'>2&times;25 lb</td><td class='n'>30 lb</td><td class='n'>100 lb</td><td class='n'>20 in</td></tr><tr><td>Week 3</td><td class='n'>155 lb</td><td class='n'>2&times;30 lb</td><td class='n'>35 lb</td><td class='n'>105 lb</td><td class='n'>24 in</td></tr></tbody>
+</table>
 
-  <div class="rx">
-    <div class="rx-top">
-      <div class="rx-load">160<small> lb</small></div>
-      <div class="rx-vol">5 &times; 3</div>
-    </div>
-    <div class="rx-sub">
-      <div>RPE <b>6&ndash;7</b></div><div>Rest <b>90&ndash;120s</b></div><div>Tempo <b>controlled</b></div>
-    </div>
-  </div>
-
-  <div class="plates">
-    <div class="cap">Load the bar</div>
-    <div class="bar" data-bar-viz></div>
-    <div class="perside" data-per-side></div>
-  </div>
-
-  <div class="ramp">
-    <div class="cap">Build up first</div>
-    <div class="ramp-row">
-      <span>Empty &times; 10</span><span>80 &times; 5</span><span>115 &times; 3</span>
-    </div>
-  </div>
-
-  <div class="track">
-    <button class="setchip" aria-pressed="false">1</button>
-    <button class="setchip" aria-pressed="false">2</button>
-    <button class="setchip" aria-pressed="false">3</button>
-    <button class="setchip" aria-pressed="false">4</button>
-    <button class="setchip" aria-pressed="false">5</button>
-    <button class="timer" data-rest="120">Rest 2:00</button>
-  </div>
-
-  <div class="why"><b>Why it earns its place:</b> the hinge pattern loads glutes and hamstrings, which is where seated cycling power is weakest. Trap bar over straight bar because the neutral grip and centred load are far kinder to your lower back.</div>
-
-  <div class="notes">
-    <div class="nblock cues"><h5>Cues</h5><ul>
-      <li>Neutral spine, chest proud, ribs down</li>
-      <li>Drive through the heels, not the toes</li>
-      <li>Hip hinge, not a squat. Push the hips back to reach the handles</li>
-      <li>Brace before every rep, as if about to be punched</li>
-    </ul></div>
-    <div class="nblock faults"><h5>Watch for</h5><ul>
-      <li>Lower back rounding as you set up. If you cannot reach the handles flat-backed, raise the bar on blocks</li>
-      <li>Squatting it: knees shoved forward, hips too low. The shins stay near vertical</li>
-      <li>Yanking off the floor. Take the slack out of the bar first, then drive</li>
-      <li>Leaning back and hyperextending at the top. Stand tall and stop</li>
-      <li>Heels lifting or weight shifting onto the toes</li>
-    </ul></div>
-  </div>
-  <div class="video">
-    <div class="vcap">Watch technique</div>
-    <div class="poster" role="button" tabindex="0" data-yt="TU2xZ7s4jus" aria-label="Play video: The Trap Bar Deadlift">
-      <img src="https://img.youtube.com/vi/TU2xZ7s4jus/hqdefault.jpg" alt="" loading="lazy">
-      <div class="play"><i>&#9654;</i></div>
-    </div>
-    <div class="vmeta">The Trap Bar Deadlift &middot; Alan Thrall, Untamed Strength. <a class="ytlink" href="https://www.youtube.com/watch?v=TU2xZ7s4jus" target="_blank" rel="noopener">Open in YouTube</a></div>
-  </div>
-</article>
-
-<!-- 02 -->
-<article class="ex" data-target="115" data-fixed-bar="45">
-  <div class="ex-head">
-    <div class="ord">02</div>
-    <div>
-      <div class="ex-name">Back Squat</div>
-      <div class="ex-tag">Main lift · standard 45 lb barbell</div>
-    </div>
-  </div>
-
-  <div class="rx">
-    <div class="rx-top">
-      <div class="rx-load">115<small> lb</small></div>
-      <div class="rx-vol">4 &times; 5</div>
-    </div>
-    <div class="rx-sub">
-      <div>RPE <b>6&ndash;7</b></div><div>Rest <b>90s</b></div><div>Depth <b>below parallel</b></div>
-    </div>
-  </div>
-
-  <div class="plates">
-    <div class="cap">Load the bar</div>
-    <div class="bar" data-bar-viz></div>
-    <div class="perside" data-per-side></div>
-  </div>
-
-  <div class="ramp">
-    <div class="cap">Build up first</div>
-    <div class="ramp-row"><span>Empty &times; 10</span><span>60 &times; 5</span></div>
-  </div>
-
-  <div class="track">
-    <button class="setchip" aria-pressed="false">1</button>
-    <button class="setchip" aria-pressed="false">2</button>
-    <button class="setchip" aria-pressed="false">3</button>
-    <button class="setchip" aria-pressed="false">4</button>
-    <button class="timer" data-rest="90">Rest 1:30</button>
-  </div>
-
-  <div class="why"><b>Why it earns its place:</b> builds the quad strength and knee-extension force that a hinge alone does not, and the depth requirement keeps hip mobility honest after years in a fixed riding position.</div>
-
-  <div class="notes">
-    <div class="nblock cues"><h5>Cues</h5><ul>
-      <li>Chest up, big breath into the belly, brace</li>
-      <li>Knees track out over the toes, never inward</li>
-      <li>Hip crease below the kneecap. That is the depth target</li>
-      <li>Whole foot planted, drive the floor away</li>
-    </ul></div>
-    <div class="nblock faults"><h5>Watch for</h5><ul>
-      <li>Knees caving in on the way up. Stop the set. Lighter load, cue knees out</li>
-      <li>Heels lifting. Usually ankle mobility. Try a small heel raise or lifting shoes</li>
-      <li>Pelvis tucking under at the bottom. Stop one inch above where it starts</li>
-      <li>Hips rising first and turning it into a good morning</li>
-      <li>Bar creeping too high onto the neck. It sits on the shelf of the rear delts</li>
-    </ul></div>
-  </div>
-  <div class="video">
-    <div class="vcap">Watch technique</div>
-    <div class="poster" role="button" tabindex="0" data-yt="vmNPOjaGrVE" aria-label="Play video: How To Squat">
-      <img src="https://img.youtube.com/vi/vmNPOjaGrVE/hqdefault.jpg" alt="" loading="lazy">
-      <div class="play"><i>&#9654;</i></div>
-    </div>
-    <div class="vmeta">How To Squat &middot; Alan Thrall, Untamed Strength. <a class="ytlink" href="https://www.youtube.com/watch?v=vmNPOjaGrVE" target="_blank" rel="noopener">Open in YouTube</a></div>
-  </div>
-</article>
-
-<!-- 03 -->
-<article class="ex">
-  <div class="ex-head">
-    <div class="ord">03</div>
-    <div>
-      <div class="ex-name">Weighted Pull-up</div>
-      <div class="ex-tag">Accessory · dip belt or dumbbell between the feet</div>
-    </div>
-  </div>
-
-  <div class="rx">
-    <div class="rx-top">
-      <div class="rx-load">+5<small> lb over bodyweight</small></div>
-      <div class="rx-vol">4 &times; 5&ndash;8</div>
-    </div>
-    <div class="rx-sub">
-      <div>Rest <b>90s</b></div><div>Range <b>full</b></div><div>Chin <b>over bar</b></div>
-    </div>
-  </div>
-
-  <div class="track">
-    <button class="setchip" aria-pressed="false">1</button>
-    <button class="setchip" aria-pressed="false">2</button>
-    <button class="setchip" aria-pressed="false">3</button>
-    <button class="setchip" aria-pressed="false">4</button>
-    <button class="timer" data-rest="90">Rest 1:30</button>
-  </div>
-
-  <div class="why"><b>Why it earns its place:</b> the pull keeps shoulders and upper back balanced against hours in a forward riding position, and gives you something to hold onto when climbing out of the saddle.</div>
-
-  <div class="notes">
-    <div class="nblock cues"><h5>Cues</h5><ul>
-      <li>Dead hang at the bottom, arms straight</li>
-      <li>Pull the shoulder blades down and back before the elbows bend</li>
-      <li>Chest towards the bar, chin clears it</li>
-      <li>Lower under control, do not drop</li>
-    </ul></div>
-    <div class="nblock faults"><h5>Watch for</h5><ul>
-      <li>Kipping or swinging to generate momentum. If you need it, the load is too heavy</li>
-      <li>Half reps that never reach a straight-arm hang</li>
-      <li>Shrugging up into the ears instead of setting the scapulae down</li>
-      <li>Craning the chin over the bar while the chest stays low</li>
-    </ul></div>
-  </div>
-  <div class="video">
-    <div class="vcap">Watch technique</div>
-    <div class="poster" role="button" tabindex="0" data-yt="fnJ0F1Xsu7Y" aria-label="Play video: Weighted Pull-Ups (How To)">
-      <img src="https://img.youtube.com/vi/fnJ0F1Xsu7Y/hqdefault.jpg" alt="" loading="lazy">
-      <div class="play"><i>&#9654;</i></div>
-    </div>
-    <div class="vmeta">Weighted Pull-Ups (How To) &middot; technique focused. <a class="ytlink" href="https://www.youtube.com/watch?v=fnJ0F1Xsu7Y" target="_blank" rel="noopener">Open in YouTube</a></div>
-  </div>
-</article>
-
-<!-- 04 -->
-<article class="ex">
-  <div class="ex-head">
-    <div class="ord">04</div>
-    <div>
-      <div class="ex-name">Hanging Leg Raise</div>
-      <div class="ex-tag">Accessory · ab wheel rollout is the alternative</div>
-    </div>
-  </div>
-
-  <div class="rx">
-    <div class="rx-top">
-      <div class="rx-load">Body<small>weight</small></div>
-      <div class="rx-vol">3 &times; 8&ndash;12</div>
-    </div>
-    <div class="rx-sub">
-      <div>Rest <b>60s</b></div><div>Tempo <b>slow, controlled</b></div>
-    </div>
-  </div>
-
-  <div class="track">
-    <button class="setchip" aria-pressed="false">1</button>
-    <button class="setchip" aria-pressed="false">2</button>
-    <button class="setchip" aria-pressed="false">3</button>
-    <button class="timer" data-rest="60">Rest 1:00</button>
-  </div>
-
-  <div class="why"><b>Why it earns its place:</b> a braced trunk is what stops power leaking sideways when you stand up and throw the bike. This is the cheapest transfer in the session.</div>
-
-  <div class="notes">
-    <div class="nblock cues"><h5>Cues</h5><ul>
-      <li>Start from a still hang. No swing</li>
-      <li>Tilt the pelvis back first, then lift the legs</li>
-      <li>Lower slower than you raised</li>
-      <li>Ribs down, lower back flat, not arched</li>
-    </ul></div>
-    <div class="nblock faults"><h5>Watch for</h5><ul>
-      <li>Swinging between reps and riding the momentum</li>
-      <li>Dropping the legs instead of controlling them down</li>
-      <li>Arching the lower back at the bottom, which turns it into a hip flexor exercise</li>
-      <li>Only bending the knees while the pelvis never moves</li>
-    </ul></div>
-  </div>
-  <div class="video">
-    <div class="vcap">Watch technique</div>
-    <div class="poster" role="button" tabindex="0" data-yt="rbOJSK07AGA" aria-label="Play video: Hanging Leg Raise Tutorial, Proper Form and Technique">
-      <img src="https://img.youtube.com/vi/rbOJSK07AGA/hqdefault.jpg" alt="" loading="lazy">
-      <div class="play"><i>&#9654;</i></div>
-    </div>
-    <div class="vmeta">Hanging Leg Raise Tutorial, Proper Form and Technique &middot; form breakdown. <a class="ytlink" href="https://www.youtube.com/watch?v=rbOJSK07AGA" target="_blank" rel="noopener">Open in YouTube</a></div>
-  </div>
-</article>
-
-<details>
-  <summary>
-    <div>
-      <div class="sm-t">Cool-down</div>
-      <div class="sm-s">5 min</div>
-    </div>
-    <span class="chev">&#9656;</span>
-  </summary>
-  <div class="dbody">
-    <div class="grp"><ul>
-      <li>Hip flexor stretch 30s each side</li>
-      <li>Calf stretch 30s each side</li>
-      <li>Thoracic extension over a foam roller</li>
-    </ul></div>
-  </div>
-</details>
+<h2>How to use this</h2>
+<div class="h2sub">Add it to your home screen and it opens like an app.</div>
+<div class="callout go"><b>Test the alarm before your first session.</b> Button is at the top of every page. It uses your phone speaker, so the ringer switch has to be off silent. Tap a rest timer to start, tap it again to cancel, and it will sound and flash when the rest is up.</div>
+<div class="callout"><b>Session B moved to Saturday in week 1 only.</b> Friday 14 August is the Squamish ride with Rich. Weeks 2 and 3 stay on Friday.</div>
 
 <footer>
-  Prescription taken from Onboarding W1 Session A as scheduled in TrainingPeaks. Loads are the planned figures for week 1, RPE 6&ndash;7 means roughly three reps left in reserve at the end of every set. If a load feels above RPE 8, take weight off rather than grinding through it.<br><br>
-  Videos play inline and need a connection. If a player ever errors, use the Open in YouTube link underneath it. Set ticks and rest timers are for this session only and reset when the page reloads. Plate maths assumes pairs of 45, 35, 25, 10, 5 and 2.5 lb plates.
+  Session A loads come from the Onboarding block as planned in TrainingPeaks. Session B loads are proposed starting points rather than prescribed figures, so treat week 1 as a calibration session and adjust from there.<br><br>
+  Plate maths assumes pairs of 45, 35, 25, 10, 5 and 2.5 lb plates. Trap bars vary between 45 and 60 lb, so set yours on each Session page.
 </footer>
 
 </div>
-
-<script>
-(function(){
-  var PLATES=[45,35,25,10,5,2.5];
-  var barWeight=45;
-
-  function plateSplit(target,bar){
-    var perSide=(target-bar)/2, out=[], rem=perSide;
-    if(perSide<0) return {plates:null,perSide:perSide};
-    PLATES.forEach(function(p){
-      while(rem>=p-0.001){ out.push(p); rem-=p; }
-    });
-    return {plates:out,perSide:perSide,left:Math.round(rem*10)/10};
-  }
-
-  function cls(p){
-    return p===45?'d45':p===35?'d35':p===25?'d25':p===10?'d10':p===5?'d5':'d2';
-  }
-
-  function render(){
-    document.querySelectorAll('.ex[data-target]').forEach(function(ex){
-      var target=parseFloat(ex.dataset.target);
-      var bar=ex.dataset.fixedBar?parseFloat(ex.dataset.fixedBar):barWeight;
-      var viz=ex.querySelector('[data-bar-viz]');
-      var ps=ex.querySelector('[data-per-side]');
-      if(!viz) return;
-      var r=plateSplit(target,bar);
-      viz.innerHTML='';
-      var sl=document.createElement('div'); sl.className='sleeve'; viz.appendChild(sl);
-      if(!r.plates||r.plates.length===0){
-        var n=document.createElement('div'); n.className='note';
-        n.textContent=r.perSide<=0?'Empty bar':'No plates needed';
-        viz.appendChild(n);
-      } else {
-        r.plates.forEach(function(p){
-          var d=document.createElement('div');
-          d.className='pl '+cls(p);
-          d.textContent=p;
-          viz.appendChild(d);
-        });
-      }
-      var txt=bar+' lb bar + '+(r.perSide>0?r.perSide:0)+' lb per side = '+target+' lb';
-      if(r.left&&r.left>0.05) txt+='  (short by '+r.left+' lb per side)';
-      ps.textContent=txt;
-    });
-  }
-
-  document.querySelectorAll('.seg button').forEach(function(b){
-    b.addEventListener('click',function(){
-      document.querySelectorAll('.seg button').forEach(function(o){o.setAttribute('aria-pressed','false');});
-      b.setAttribute('aria-pressed','true');
-      barWeight=parseFloat(b.dataset.bar);
-      render();
-    });
-  });
-
-  document.querySelectorAll('.setchip').forEach(function(c){
-    c.addEventListener('click',function(){
-      c.setAttribute('aria-pressed', c.getAttribute('aria-pressed')==='true'?'false':'true');
-    });
-  });
-
-  function fmt(s){ return Math.floor(s/60)+':'+('0'+(s%60)).slice(-2); }
-  document.querySelectorAll('.timer').forEach(function(t){
-    var total=parseInt(t.dataset.rest,10), id=null, left=total;
-    var label='Rest '+fmt(total);
-    t.addEventListener('click',function(){
-      if(id){ clearInterval(id); id=null; left=total; t.className='timer'; t.textContent=label; return; }
-      left=total; t.className='timer run'; t.textContent=fmt(left);
-      id=setInterval(function(){
-        left--;
-        if(left<=0){
-          clearInterval(id); id=null;
-          t.className='timer done'; t.textContent='Go';
-          if(navigator.vibrate) navigator.vibrate([200,100,200]);
-          setTimeout(function(){ if(!id){ t.className='timer'; t.textContent=label; } },5000);
-        } else { t.textContent=fmt(left); }
-      },1000);
-    });
-  });
-
-  function loadVideo(el){
-    var id=el.dataset.yt;
-    var f=document.createElement('iframe');
-    f.src='https://www.youtube.com/embed/'+id+'?autoplay=1&rel=0&playsinline=1&modestbranding=1';
-    f.title='Technique video';
-    f.setAttribute('referrerpolicy','strict-origin-when-cross-origin');
-    f.setAttribute('allow','accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen');
-    f.setAttribute('allowfullscreen','');
-    el.replaceWith(f);
-  }
-  document.querySelectorAll('.poster').forEach(function(p){
-    p.addEventListener('click',function(){loadVideo(p);});
-    p.addEventListener('keydown',function(e){
-      if(e.key==='Enter'||e.key===' '){e.preventDefault();loadVideo(p);}
-    });
-    var img=p.querySelector('img');
-    if(img){
-      img.addEventListener('error',function(){
-        p.classList.add('nothumb');
-        var pl=p.querySelector('.play');
-        if(pl) pl.setAttribute('data-label','Tap to play');
-      });
-      // catch images that already failed before the listener attached
-      if(img.complete && img.naturalWidth===0){
-        p.classList.add('nothumb');
-        var pl2=p.querySelector('.play');
-        if(pl2) pl2.setAttribute('data-label','Tap to play');
-      }
-    }
-  });
-
-  render();
-})();
-</script>
+<script src="app.js"></script>
 </body>
 </html>
